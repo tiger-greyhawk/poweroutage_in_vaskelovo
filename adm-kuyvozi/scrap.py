@@ -52,7 +52,7 @@ def scrape (cachedir):
 def notify_tg ():
     import telegram
     bot = telegram.Bot(token=os.environ.get('TG_TOKEN'))
-    query = Record.select().where((Record.text ** '%620-210%' | Record.text ** '%620-110%' | Record.text ** '%Троицкое%' | Record.text ** '%ЛОМО%') & (Record.notification_sent == False)).order_by(Record.created.desc())
+    query = Record.select().where((Record.text ** '%620-210%' | Record.text ** '%620-204%' | Record.text ** '%Красная  нить%' | Record.text ** '%Балтиец%') & (Record.notification_sent == False)).order_by(Record.created.desc())
     for r in query:
         logging.info("Sending alert about {} ({})".format(r.title, r.URL))
         f = open('./cache/' + md5(r.URL.encode('utf-8')).hexdigest(), 'rb')
